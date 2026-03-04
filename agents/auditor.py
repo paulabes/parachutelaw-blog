@@ -22,7 +22,7 @@ def audit(research_brief: str, draft: str) -> str:
     client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
     response = client.models.generate_content(
-        model="gemini-2.0-flash",
+        model="gemini-2.5-flash",
         contents=(
             "Compare the following DRAFT against the RESEARCH BRIEF. "
             "Flag any hallucinated laws, incorrect numbers, or misleading claims.\n\n"

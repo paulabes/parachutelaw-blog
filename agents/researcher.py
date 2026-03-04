@@ -17,7 +17,7 @@ def research(topic: str) -> str:
     client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
     response = client.models.generate_content(
-        model="gemini-2.0-flash",
+        model="gemini-2.5-flash",
         contents=f"Research the following UK family law topic for a March 2026 blog post: {topic}",
         config=types.GenerateContentConfig(
             system_instruction=system_prompt,
