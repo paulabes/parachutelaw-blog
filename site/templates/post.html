@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+
+<!-- Hero -->
+<section class="pt-36 pb-12 lg:px-12 px-6">
+    <div class="max-w-[800px] mx-auto">
+        <div class="mb-6 flex items-center gap-4">
+            <a href="/news" class="text-[11px] tracking-[0.2em] text-gray-500 uppercase hover:text-[#C4A470] transition-colors">&larr; Back to News</a>
+            <span class="text-gray-700">|</span>
+            <span class="text-[10px] uppercase tracking-widest text-[#C4A470] font-medium">{{ post.category }}</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-serif text-white mb-4 leading-tight">{{ post.title }}</h1>
+        <p class="text-gray-500 text-sm">Published {{ post.date_formatted }}</p>
+    </div>
+</section>
+
+<!-- Article Content -->
+<section class="py-12 bg-white text-[#050615]">
+    <div class="max-w-[800px] mx-auto px-6">
+        <article class="prose max-w-none">
+            {{ content|safe }}
+        </article>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="py-16 bg-[#050615]">
+    <div class="max-w-[800px] mx-auto px-6 text-center">
+        <div class="w-16 h-[1px] bg-[#C4A470] mx-auto mb-8"></div>
+        <h2 class="text-3xl font-serif text-white mb-4">Choose Your Landing</h2>
+        <p class="text-gray-400 font-light mb-8">View our fixed fees or book a free strategy call with a solicitor.</p>
+        <div class="flex flex-col sm:flex-row gap-5 justify-center">
+            <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 bg-[#C4A470] hover:bg-[#a38656] text-white text-[11px] uppercase tracking-[0.2em] font-medium transition-all duration-300 rounded-sm">
+                Book Free Strategy Call
+            </a>
+            <a href="tel:02071834547" class="inline-flex items-center justify-center px-8 py-4 border border-white/20 hover:bg-white hover:text-black text-white text-[11px] uppercase tracking-[0.2em] font-medium transition-all duration-300 rounded-sm">
+                Call 0207 183 4547
+            </a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -29,7 +29,15 @@ See `parachute_spec.md` for the full project spec.
 ├── prompts/
 │   ├── research_dna.md    # System instructions for legal research
 │   └── brand_voice.md     # Parachute Law tone & conversion guidelines
-└── output/                # Generated articles saved here
+├── output/                # Generated articles saved here
+└── site/
+    ├── app.py             # Flask demo website (localhost:5000)
+    └── templates/
+        ├── base.html      # Shared layout (nav, footer, Tailwind/fonts)
+        ├── home.html      # Landing page with all conversion sections
+        ├── contact.html   # Contact form + office details
+        ├── news.html      # Blog listing (reads from output/)
+        └── post.html      # Single article view
 ```
 
 ---
@@ -88,6 +96,22 @@ Execute a plan step by step.
 4. **Save:** Final article saved to `output/`
 
 Run: `python main.py --topic "Pension Sharing"`
+
+---
+
+## Demo Website
+
+A Flask-powered preview site mirroring parachutelaw.co.uk with a premium dark design.
+
+```bash
+pip install flask markdown
+python site/app.py
+# → http://localhost:5000
+```
+
+Pages: Home (`/`), Contact (`/contact`), News (`/news`), Article (`/news/<slug>`)
+
+The `/news` page auto-discovers `.md` files from `output/` — generate articles with the content engine and they appear instantly.
 
 ---
 

@@ -1,0 +1,363 @@
+{% extends "base.html" %}
+{% block title %}Your Soft Landing in Family Law{% endblock %}
+
+{% block content %}
+
+<!-- Fixed Hero Background -->
+<div class="fixed top-0 w-full h-screen -z-10">
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2670&auto=format&fit=crop'); opacity: 0.4;"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-[#050615] via-[#050615]/90 to-[#050615]/60"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#050615]/50 to-[#050615]"></div>
+</div>
+
+<!-- HERO -->
+<section class="min-h-screen flex items-center justify-center lg:px-12 px-6 pt-32 pb-20">
+    <div class="max-w-[1400px] w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+        <div class="lg:col-span-8 flex flex-col">
+            <div class="mb-8 pl-1 flex items-center gap-3">
+                <span class="w-12 h-[1px] bg-[#C4A470]"></span>
+                <span class="text-[11px] tracking-[0.25em] text-[#C4A470] uppercase font-medium">
+                    No-Nonsense Family Law
+                </span>
+            </div>
+
+            <h1 class="leading-[1.1] text-5xl md:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] text-white tracking-tight font-serif mb-8">
+                Your Soft Landing <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50 italic">Starts Here.</span>
+            </h1>
+
+            <p class="text-base lg:text-lg text-gray-400 font-light leading-relaxed max-w-xl mb-10">
+                Fixed fees. Zero jargon. 100% online. We bypass the legal conundrum and get straight to the heart of your matter &mdash; so you can move on with your life.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-5">
+                <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 bg-[#C4A470] hover:bg-[#a38656] text-white text-[11px] uppercase tracking-[0.2em] font-medium transition-all duration-300 rounded-sm">
+                    Book FREE Consultation
+                </a>
+                <a href="tel:02071834547" class="inline-flex items-center justify-center px-8 py-4 border border-white/20 hover:bg-white hover:text-black text-white text-[11px] uppercase tracking-[0.2em] font-medium transition-all duration-300 rounded-sm">
+                    Call 0207 183 4547
+                </a>
+            </div>
+        </div>
+
+        <!-- Trust Strip -->
+        <div class="hidden lg:flex lg:col-span-4 flex-col justify-end space-y-8 border-l border-white/10 pl-10 pb-4">
+            <div class="group cursor-pointer">
+                <h3 class="text-white font-serif text-2xl mb-1 group-hover:text-[#C4A470] transition-colors">4.9 / 5.0</h3>
+                <p class="text-gray-500 text-xs uppercase tracking-widest">Trustpilot Rating</p>
+            </div>
+            <div class="group cursor-pointer">
+                <h3 class="text-white font-serif text-2xl mb-1 group-hover:text-[#C4A470] transition-colors">Fixed Fees</h3>
+                <p class="text-gray-500 text-xs uppercase tracking-widest">No Hidden Costs</p>
+            </div>
+            <div class="group cursor-pointer">
+                <h3 class="text-white font-serif text-2xl mb-1 group-hover:text-[#C4A470] transition-colors">100% Online</h3>
+                <p class="text-gray-500 text-xs uppercase tracking-widest">Zoom & WhatsApp</p>
+            </div>
+            <div class="group cursor-pointer">
+                <h3 class="text-white font-serif text-2xl mb-1 group-hover:text-[#C4A470] transition-colors">SRA Regulated</h3>
+                <p class="text-gray-500 text-xs uppercase tracking-widest">Solicitors Regulation Authority</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TRUST STRIP (Mobile) -->
+<section class="lg:hidden py-8 bg-[#050615] border-t border-b border-white/10">
+    <div class="max-w-[1400px] mx-auto px-6 grid grid-cols-2 gap-6 text-center">
+        <div>
+            <p class="text-white font-serif text-xl">4.9 / 5.0</p>
+            <p class="text-gray-500 text-[10px] uppercase tracking-widest">Trustpilot</p>
+        </div>
+        <div>
+            <p class="text-white font-serif text-xl">Fixed Fees</p>
+            <p class="text-gray-500 text-[10px] uppercase tracking-widest">No Hidden Costs</p>
+        </div>
+        <div>
+            <p class="text-white font-serif text-xl">100% Online</p>
+            <p class="text-gray-500 text-[10px] uppercase tracking-widest">Zoom & WhatsApp</p>
+        </div>
+        <div>
+            <p class="text-white font-serif text-xl">SRA Regulated</p>
+            <p class="text-gray-500 text-[10px] uppercase tracking-widest">No. 828076</p>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="py-24 bg-white text-[#050615]">
+    <div class="max-w-[1200px] mx-auto px-6">
+        <div class="text-center mb-20">
+            <span class="text-[10px] tracking-[0.25em] text-[#C4A470] uppercase font-medium block mb-4">How We Help</span>
+            <h2 class="text-4xl md:text-5xl font-serif text-[#050615] mb-6">Our Practice Areas</h2>
+            <div class="w-16 h-[1px] bg-[#C4A470] mx-auto mb-6"></div>
+            <p class="text-gray-500 max-w-2xl mx-auto font-light leading-relaxed">
+                Straight to the heart of your legal matter. No oak-paneled offices. No hourly billing surprises. Just clear, fixed-fee legal help.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-200 border border-gray-200">
+            <!-- Divorce -->
+            <div class="bg-white p-12 group hover:bg-[#050615] hover:text-white transition-all duration-500">
+                <div class="w-12 h-12 rounded-full border border-gray-200 group-hover:border-[#C4A470] flex items-center justify-center text-[#C4A470] mb-8 transition-colors">
+                    <iconify-icon icon="solar:heart-broken-linear" width="24"></iconify-icon>
+                </div>
+                <h3 class="text-xl font-serif mb-4">Divorce & Separation</h3>
+                <ul class="space-y-2 mb-8 text-sm text-gray-500 group-hover:text-gray-400 font-light">
+                    <li>&bull; No-fault Divorce Applications</li>
+                    <li>&bull; Judicial Separation</li>
+                    <li>&bull; International Divorce</li>
+                </ul>
+                <span class="text-[10px] uppercase tracking-[0.2em] font-medium text-[#C4A470] group-hover:text-white transition-colors">From &pound;599 &rarr;</span>
+            </div>
+
+            <!-- Property -->
+            <div class="bg-white p-12 group hover:bg-[#050615] hover:text-white transition-all duration-500">
+                <div class="w-12 h-12 rounded-full border border-gray-200 group-hover:border-[#C4A470] flex items-center justify-center text-[#C4A470] mb-8 transition-colors">
+                    <iconify-icon icon="solar:home-2-linear" width="24"></iconify-icon>
+                </div>
+                <h3 class="text-xl font-serif mb-4">Property & Finances</h3>
+                <ul class="space-y-2 mb-8 text-sm text-gray-500 group-hover:text-gray-400 font-light">
+                    <li>&bull; Financial Consent Orders</li>
+                    <li>&bull; Clean Break Orders</li>
+                    <li>&bull; Pension Sharing (CETV)</li>
+                </ul>
+                <span class="text-[10px] uppercase tracking-[0.2em] font-medium text-[#C4A470] group-hover:text-white transition-colors">Fixed Fees &rarr;</span>
+            </div>
+
+            <!-- Wills -->
+            <div class="bg-white p-12 group hover:bg-[#050615] hover:text-white transition-all duration-500">
+                <div class="w-12 h-12 rounded-full border border-gray-200 group-hover:border-[#C4A470] flex items-center justify-center text-[#C4A470] mb-8 transition-colors">
+                    <iconify-icon icon="solar:document-text-linear" width="24"></iconify-icon>
+                </div>
+                <h3 class="text-xl font-serif mb-4">Wills & LPA</h3>
+                <ul class="space-y-2 mb-8 text-sm text-gray-500 group-hover:text-gray-400 font-light">
+                    <li>&bull; Single & Mirror Wills</li>
+                    <li>&bull; Lasting Power of Attorney</li>
+                    <li>&bull; Probate Services</li>
+                </ul>
+                <span class="text-[10px] uppercase tracking-[0.2em] font-medium text-[#C4A470] group-hover:text-white transition-colors">From &pound;299 &rarr;</span>
+            </div>
+
+            <!-- Employment -->
+            <div class="bg-white p-12 group hover:bg-[#050615] hover:text-white transition-all duration-500">
+                <div class="w-12 h-12 rounded-full border border-gray-200 group-hover:border-[#C4A470] flex items-center justify-center text-[#C4A470] mb-8 transition-colors">
+                    <iconify-icon icon="solar:case-round-linear" width="24"></iconify-icon>
+                </div>
+                <h3 class="text-xl font-serif mb-4">Employment Law</h3>
+                <ul class="space-y-2 mb-8 text-sm text-gray-500 group-hover:text-gray-400 font-light">
+                    <li>&bull; Unfair Dismissal</li>
+                    <li>&bull; Settlement Agreements</li>
+                    <li>&bull; Tribunal Representation</li>
+                </ul>
+                <span class="text-[10px] uppercase tracking-[0.2em] font-medium text-[#C4A470] group-hover:text-white transition-colors">Get Advice &rarr;</span>
+            </div>
+
+            <!-- Disputes -->
+            <div class="bg-white p-12 group hover:bg-[#050615] hover:text-white transition-all duration-500">
+                <div class="w-12 h-12 rounded-full border border-gray-200 group-hover:border-[#C4A470] flex items-center justify-center text-[#C4A470] mb-8 transition-colors">
+                    <iconify-icon icon="solar:shield-check-linear" width="24"></iconify-icon>
+                </div>
+                <h3 class="text-xl font-serif mb-4">Civil Disputes</h3>
+                <ul class="space-y-2 mb-8 text-sm text-gray-500 group-hover:text-gray-400 font-light">
+                    <li>&bull; Boundary & Neighbour Disputes</li>
+                    <li>&bull; Debt Recovery</li>
+                    <li>&bull; Contractual Claims</li>
+                </ul>
+                <span class="text-[10px] uppercase tracking-[0.2em] font-medium text-[#C4A470] group-hover:text-white transition-colors">Learn More &rarr;</span>
+            </div>
+
+            <!-- Business -->
+            <div class="bg-white p-12 group hover:bg-[#050615] hover:text-white transition-all duration-500">
+                <div class="w-12 h-12 rounded-full border border-gray-200 group-hover:border-[#C4A470] flex items-center justify-center text-[#C4A470] mb-8 transition-colors">
+                    <iconify-icon icon="solar:graph-up-linear" width="24"></iconify-icon>
+                </div>
+                <h3 class="text-xl font-serif mb-4">Business Law</h3>
+                <ul class="space-y-2 mb-8 text-sm text-gray-500 group-hover:text-gray-400 font-light">
+                    <li>&bull; Company Formation</li>
+                    <li>&bull; Shareholder Agreements</li>
+                    <li>&bull; Commercial Contracts</li>
+                </ul>
+                <span class="text-[10px] uppercase tracking-[0.2em] font-medium text-[#C4A470] group-hover:text-white transition-colors">Learn More &rarr;</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- "STUFFINESS" CONTRAST SECTION -->
+<section class="py-24 bg-[#050615] relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-1/3 h-full bg-[#0a0c24] skew-x-12 -translate-x-32 hidden lg:block pointer-events-none"></div>
+    <div class="max-w-[1200px] mx-auto px-6 relative z-10">
+        <div class="text-center mb-16">
+            <span class="text-[10px] tracking-[0.25em] text-[#C4A470] uppercase font-medium block mb-4">The Parachute Difference</span>
+            <h2 class="text-4xl md:text-5xl font-serif text-white mb-6">Ditch the Stuffiness</h2>
+            <div class="w-16 h-[1px] bg-[#C4A470] mx-auto"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+            <!-- Traditional -->
+            <div class="border border-white/10 rounded-sm p-10">
+                <div class="flex items-center gap-3 mb-6">
+                    <iconify-icon icon="solar:close-circle-linear" width="24" class="text-red-400"></iconify-icon>
+                    <h3 class="text-lg font-serif text-gray-400">Traditional Firms</h3>
+                </div>
+                <ul class="space-y-4 text-sm text-gray-500 font-light">
+                    <li class="flex items-start gap-3">
+                        <span class="text-red-400 mt-0.5">&times;</span>
+                        Hourly billing &mdash; the clock is always ticking
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-red-400 mt-0.5">&times;</span>
+                        Weeks waiting for a single email reply
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-red-400 mt-0.5">&times;</span>
+                        Jargon-heavy letters you need a dictionary for
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-red-400 mt-0.5">&times;</span>
+                        Oak-paneled offices &mdash; you pay for the carpet
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-red-400 mt-0.5">&times;</span>
+                        &pound;5,000+ before you even see a courtroom
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Parachute -->
+            <div class="border border-[#C4A470]/30 rounded-sm p-10 bg-[#C4A470]/5">
+                <div class="flex items-center gap-3 mb-6">
+                    <iconify-icon icon="solar:check-circle-linear" width="24" class="text-[#C4A470]"></iconify-icon>
+                    <h3 class="text-lg font-serif text-white">Parachute Law</h3>
+                </div>
+                <ul class="space-y-4 text-sm text-gray-300 font-light">
+                    <li class="flex items-start gap-3">
+                        <span class="text-[#C4A470] mt-0.5">&check;</span>
+                        Fixed fees &mdash; you know the cost upfront
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-[#C4A470] mt-0.5">&check;</span>
+                        Same-day responses via WhatsApp & Zoom
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-[#C4A470] mt-0.5">&check;</span>
+                        Plain English &mdash; we speak human, not legalese
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-[#C4A470] mt-0.5">&check;</span>
+                        100% online &mdash; no travel, no waiting rooms
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-[#C4A470] mt-0.5">&check;</span>
+                        Divorce from &pound;599 &mdash; transparent pricing
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="py-24 bg-white text-[#050615]">
+    <div class="max-w-[900px] mx-auto px-6 text-center">
+        <div class="mb-8">
+            <div class="flex justify-center gap-1 mb-6">
+                <iconify-icon icon="solar:star-bold" width="24" class="text-[#C4A470]"></iconify-icon>
+                <iconify-icon icon="solar:star-bold" width="24" class="text-[#C4A470]"></iconify-icon>
+                <iconify-icon icon="solar:star-bold" width="24" class="text-[#C4A470]"></iconify-icon>
+                <iconify-icon icon="solar:star-bold" width="24" class="text-[#C4A470]"></iconify-icon>
+                <iconify-icon icon="solar:star-bold" width="24" class="text-[#C4A470]"></iconify-icon>
+            </div>
+            <blockquote class="text-2xl md:text-3xl font-serif text-[#050615] leading-relaxed mb-8 italic">
+                &ldquo;I was terrified of the divorce process. Parachute made it painless. Fixed fee, no surprises, and my solicitor was on WhatsApp whenever I needed them. I wish I&rsquo;d found them sooner.&rdquo;
+            </blockquote>
+            <div>
+                <p class="font-medium text-[#050615]">Sarah T.</p>
+                <p class="text-sm text-gray-400">Verified Trustpilot Review</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA / BOOKING -->
+<section id="book" class="py-24 bg-[#050615] relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-1/2 h-full bg-[#0a0c24] -skew-x-12 translate-x-32 hidden lg:block pointer-events-none"></div>
+    <div class="max-w-[1200px] mx-auto px-6 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+            <!-- Info -->
+            <div class="flex flex-col justify-center">
+                <span class="text-[10px] tracking-[0.25em] text-[#C4A470] uppercase font-medium mb-6">Ready for Your Fresh Start?</span>
+                <h2 class="text-4xl md:text-5xl font-serif text-white mb-6">Talk to a Solicitor</h2>
+                <p class="text-gray-400 font-light leading-relaxed mb-10 max-w-md">
+                    No obligation. No hourly clock. Just a straightforward conversation about your situation and how we can help you land safely.
+                </p>
+                <div class="space-y-6">
+                    <div class="border-l border-[#C4A470] pl-6">
+                        <h4 class="text-white text-sm font-medium mb-2 uppercase tracking-wide">Response Time</h4>
+                        <p class="text-gray-400 text-sm font-light">Same-day callback &mdash; we don't do "we'll be in touch"</p>
+                    </div>
+                    <div class="border-l border-[#C4A470] pl-6">
+                        <h4 class="text-white text-sm font-medium mb-2 uppercase tracking-wide">How It Works</h4>
+                        <p class="text-gray-400 text-sm font-light">15-min strategy call &rarr; Fixed-fee quote &rarr; We get to work</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <div class="bg-white p-8 md:p-12 rounded-sm shadow-2xl">
+                <form class="space-y-5">
+                    <div class="grid grid-cols-2 gap-5">
+                        <div class="col-span-2 md:col-span-1">
+                            <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">First Name *</label>
+                            <input type="text" class="w-full bg-gray-50 border border-gray-200 p-3 text-black focus:outline-none focus:border-[#C4A470] focus:ring-1 focus:ring-[#C4A470] transition-all rounded-sm">
+                        </div>
+                        <div class="col-span-2 md:col-span-1">
+                            <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Last Name *</label>
+                            <input type="text" class="w-full bg-gray-50 border border-gray-200 p-3 text-black focus:outline-none focus:border-[#C4A470] focus:ring-1 focus:ring-[#C4A470] transition-all rounded-sm">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-5">
+                        <div class="col-span-2 md:col-span-1">
+                            <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Email *</label>
+                            <input type="email" class="w-full bg-gray-50 border border-gray-200 p-3 text-black focus:outline-none focus:border-[#C4A470] focus:ring-1 focus:ring-[#C4A470] transition-all rounded-sm">
+                        </div>
+                        <div class="col-span-2 md:col-span-1">
+                            <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Phone *</label>
+                            <input type="tel" class="w-full bg-gray-50 border border-gray-200 p-3 text-black focus:outline-none focus:border-[#C4A470] focus:ring-1 focus:ring-[#C4A470] transition-all rounded-sm">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">What do you need help with?</label>
+                        <div class="relative">
+                            <select class="w-full bg-gray-50 border border-gray-200 p-3 text-black focus:outline-none focus:border-[#C4A470] focus:ring-1 focus:ring-[#C4A470] transition-all rounded-sm appearance-none">
+                                <option>Select a service...</option>
+                                <option>Divorce & Separation</option>
+                                <option>Financial Settlement / Consent Order</option>
+                                <option>Pension Sharing</option>
+                                <option>Wills & Lasting Power of Attorney</option>
+                                <option>Employment Issue</option>
+                                <option>Other / Not Sure</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+                                <iconify-icon icon="solar:alt-arrow-down-linear" width="12"></iconify-icon>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Tell us briefly about your situation</label>
+                        <textarea rows="4" class="w-full bg-gray-50 border border-gray-200 p-3 text-black focus:outline-none focus:border-[#C4A470] focus:ring-1 focus:ring-[#C4A470] transition-all rounded-sm resize-none"></textarea>
+                    </div>
+                    <button type="button" class="w-full bg-[#050615] text-white font-bold uppercase tracking-[0.15em] text-xs py-4 hover:bg-[#C4A470] hover:text-white transition-colors duration-300 mt-2">
+                        Book Free Consultation
+                    </button>
+                    <p class="text-[10px] text-gray-400 text-center pt-2 italic">
+                        No obligation. We&rsquo;ll call you back the same day.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

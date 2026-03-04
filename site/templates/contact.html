@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+{% block title %}Contact Us{% endblock %}
+
+{% block content %}
+
+<!-- Hero -->
+<section class="pt-36 pb-16 lg:px-12 px-6">
+    <div class="max-w-[1200px] mx-auto">
+        <div class="mb-8 pl-1 flex items-center gap-3">
+            <span class="w-12 h-[1px] bg-[#C4A470]"></span>
+            <span class="text-[11px] tracking-[0.25em] text-[#C4A470] uppercase font-medium">Get In Touch</span>
+        </div>
+        <h1 class="text-5xl md:text-6xl font-serif text-white mb-6">Contact Us</h1>
+        <p class="text-gray-400 font-light max-w-xl text-lg leading-relaxed">
+            Ready to talk? Book your free consultation or drop us a message. No pressure, no jargon &mdash; just straight answers.
+        </p>
+    </div>
+</section>
+
+<!-- Contact Form + Details -->
+<section class="py-16 bg-white text-[#050615]">
+    <div class="max-w-[1200px] mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+
+            <!-- Form -->
+            <div class="bg-gray-50 p-8 md:p-12 rounded-sm">
+                <h2 class="text-2xl font-serif mb-6 text-[#050615]">Book a FREE Consultation</h2>
+                <form class="space-y-5">
+                    <div class="grid grid-cols-2 gap-5">
+                        <div class="col-span-2 md:col-span-1">
+                            <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Full Name *</label>
+                            <input type="text" class="w-full bg-white border border-gray-200 p-3 text-black focus:outline-none focus:border-[#C4A470] focus:ring-1 focus:ring-[#C4A470] transition-all rounded-sm">
+                        </div>
+                        <div class="col-span-2 md:col-span-1">
+                            <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Email *</label>
+                            <input type="email" class="w-full bg-white border border-gray-200 p-3 text-black focus:outline-none focus:border-[#C4A470] focus:ring-1 focus:ring-[#C4A470] transition-all rounded-sm">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-5">
+                        <div class="col-span-2 md:col-span-1">
+                            <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Phone *</label>
+                            <input type="tel" class="w-full bg-white border border-gray-200 p-3 text-black focus:outline-none focus:border-[#C4A470] focus:ring-1 focus:ring-[#C4A470] transition-all rounded-sm">
+                        </div>
+                        <div class="col-span-2 md:col-span-1">
+                            <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Subject</label>
+                            <div class="relative">
+                                <select class="w-full bg-white border border-gray-200 p-3 text-black focus:outline-none focus:border-[#C4A470] focus:ring-1 focus:ring-[#C4A470] transition-all rounded-sm appearance-none">
+                                    <option>Select a topic...</option>
+                                    <option>Divorce & Separation</option>
+                                    <option>Financial Settlement</option>
+                                    <option>Pension Sharing</option>
+                                    <option>Wills & LPA</option>
+                                    <option>Employment Law</option>
+                                    <option>Other</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+                                    <iconify-icon icon="solar:alt-arrow-down-linear" width="12"></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Your Message *</label>
+                        <textarea rows="5" class="w-full bg-white border border-gray-200 p-3 text-black focus:outline-none focus:border-[#C4A470] focus:ring-1 focus:ring-[#C4A470] transition-all rounded-sm resize-none" placeholder="Tell us briefly about your situation..."></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Best Time to Contact</label>
+                        <div class="relative">
+                            <select class="w-full bg-white border border-gray-200 p-3 text-black focus:outline-none focus:border-[#C4A470] focus:ring-1 focus:ring-[#C4A470] transition-all rounded-sm appearance-none">
+                                <option>Any time</option>
+                                <option>Morning (9am - 12pm)</option>
+                                <option>Afternoon (12pm - 5pm)</option>
+                                <option>Evening (5pm - 8pm)</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+                                <iconify-icon icon="solar:alt-arrow-down-linear" width="12"></iconify-icon>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="w-full bg-[#050615] text-white font-bold uppercase tracking-[0.15em] text-xs py-4 hover:bg-[#C4A470] hover:text-white transition-colors duration-300 mt-2">
+                        Send Message
+                    </button>
+                    <p class="text-[10px] text-gray-400 text-center pt-2 italic">
+                        We respond the same day. No obligation, no pressure.
+                    </p>
+                </form>
+            </div>
+
+            <!-- Office Details -->
+            <div class="flex flex-col justify-between">
+                <div>
+                    <h2 class="text-2xl font-serif mb-8 text-[#050615]">Our Office</h2>
+                    <div class="space-y-6 mb-10">
+                        <div class="flex items-start gap-4">
+                            <div class="text-[#C4A470] mt-1">
+                                <iconify-icon icon="solar:map-point-linear" width="22"></iconify-icon>
+                            </div>
+                            <div>
+                                <span class="block text-xs uppercase tracking-widest text-gray-400 mb-1">Address</span>
+                                <p class="text-[#050615] text-sm">27 Old Gloucester Street<br>Holborn, London<br>WC1N 3AX</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="text-[#C4A470] mt-1">
+                                <iconify-icon icon="solar:phone-calling-linear" width="22"></iconify-icon>
+                            </div>
+                            <div>
+                                <span class="block text-xs uppercase tracking-widest text-gray-400 mb-1">Phone</span>
+                                <a href="tel:02071834547" class="text-[#050615] text-sm hover:text-[#C4A470] transition-colors font-medium">0207 183 4547</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="text-[#C4A470] mt-1">
+                                <iconify-icon icon="solar:letter-linear" width="22"></iconify-icon>
+                            </div>
+                            <div>
+                                <span class="block text-xs uppercase tracking-widest text-gray-400 mb-1">Email</span>
+                                <a href="mailto:thelegalteam@parachutelaw.co.uk" class="text-[#050615] text-sm hover:text-[#C4A470] transition-colors font-medium">thelegalteam@parachutelaw.co.uk</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="text-[#C4A470] mt-1">
+                                <iconify-icon icon="solar:clock-circle-linear" width="22"></iconify-icon>
+                            </div>
+                            <div>
+                                <span class="block text-xs uppercase tracking-widest text-gray-400 mb-1">Office Hours</span>
+                                <p class="text-[#050615] text-sm">Mon &ndash; Fri: 9:00 AM &ndash; 6:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-gray-200 pt-6">
+                        <p class="text-xs text-gray-400 uppercase tracking-widest mb-2">SRA Regulated</p>
+                        <p class="text-sm text-gray-600">Parachute Law Ltd is authorised and regulated by the Solicitors Regulation Authority (SRA No. 828076).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Map -->
+<section class="bg-white pb-0">
+    <div class="max-w-[1200px] mx-auto px-6 pb-16">
+        <div class="h-[400px] bg-gray-200 rounded-sm overflow-hidden">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.8!2d-0.1211!3d51.5221!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761b2e6e7b3b3b%3A0x1!2s27+Old+Gloucester+St%2C+London+WC1N+3AX!5e0!3m2!1sen!2suk!4v1709234567890"
+                width="100%" height="100%" style="border:0; filter: grayscale(100%);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

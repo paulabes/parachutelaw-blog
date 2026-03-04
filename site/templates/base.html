@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Parachute Law{% endblock %} | UK Family Law Solicitors</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #444; }
+        .fade-enter { opacity: 0; transform: translateY(10px); animation: fadeIn 0.6s forwards; }
+        @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+        /* Prose styling for blog posts */
+        .prose h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1rem; color: #050615; }
+        .prose h2 { font-family: 'Playfair Display', serif; font-size: 1.75rem; margin-top: 2rem; margin-bottom: 0.75rem; color: #050615; }
+        .prose h3 { font-family: 'Playfair Display', serif; font-size: 1.35rem; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #050615; }
+        .prose p { margin-bottom: 1rem; line-height: 1.8; color: #374151; }
+        .prose ul, .prose ol { margin-bottom: 1rem; padding-left: 1.5rem; color: #374151; }
+        .prose li { margin-bottom: 0.5rem; line-height: 1.7; }
+        .prose ul li { list-style-type: disc; }
+        .prose ol li { list-style-type: decimal; }
+        .prose strong { color: #050615; }
+        .prose a { color: #C4A470; text-decoration: underline; }
+        .prose blockquote { border-left: 3px solid #C4A470; padding-left: 1rem; margin: 1.5rem 0; font-style: italic; color: #6b7280; }
+        .prose table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+        .prose th, .prose td { border: 1px solid #e5e7eb; padding: 0.75rem; text-align: left; }
+        .prose th { background: #f9fafb; font-weight: 600; }
+    </style>
+</head>
+
+<body class="bg-[#050615] text-white antialiased selection:bg-white selection:text-black overflow-x-hidden">
+
+    <!-- Navigation -->
+    <header class="fixed transition-all duration-300 backdrop-blur-md z-50 w-full border-white/5 border-b top-0 bg-[#050615]/80" id="main-header">
+        <div class="lg:px-12 flex h-24 max-w-[1400px] mx-auto px-6 items-center justify-between">
+
+            <!-- Logo -->
+            <a href="/" class="flex-shrink-0 flex items-center gap-3 z-50">
+                <div class="flex flex-col">
+                    <h1 class="font-serif text-2xl tracking-tight leading-none text-white font-medium">Parachute <span class="text-[#C4A470] italic">Law</span></h1>
+                    <span class="text-[9px] tracking-[0.2em] uppercase text-gray-400 mt-1">Your Soft Landing in Family Law</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden xl:flex flex-1 space-x-8 items-center justify-center ml-10">
+                <a href="/" class="text-[11px] hover:text-[#C4A470] transition-colors uppercase font-medium text-gray-300 tracking-widest">Home</a>
+                <a href="/#services" class="text-[11px] hover:text-[#C4A470] transition-colors uppercase font-medium text-gray-300 tracking-widest">Services</a>
+                <a href="/news" class="text-[11px] hover:text-[#C4A470] transition-colors uppercase font-medium text-gray-300 tracking-widest">News</a>
+                <a href="/contact" class="text-[11px] hover:text-[#C4A470] transition-colors uppercase font-medium text-gray-300 tracking-widest">Contact</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="hidden xl:flex items-center gap-6 justify-end">
+                <a href="tel:02071834547" class="flex items-center gap-2 text-white hover:text-[#C4A470] transition-colors">
+                    <div class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center">
+                        <iconify-icon icon="solar:phone-calling-linear" width="14"></iconify-icon>
+                    </div>
+                    <span class="text-sm font-medium">0207 183 4547</span>
+                </a>
+                <a href="/contact" class="inline-flex items-center justify-center text-[11px] hover:bg-gray-200 transition-colors uppercase font-semibold text-black tracking-widest bg-white rounded-sm pt-3 pr-6 pb-3 pl-6">
+                    Free Consultation
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <div class="xl:hidden text-white cursor-pointer ml-auto z-50 p-2" id="mobile-menu-trigger">
+                <iconify-icon icon="solar:hamburger-menu-linear" width="28" height="28"></iconify-icon>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[99999] pointer-events-none opacity-0 invisible transition-all duration-300 xl:hidden">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-md" id="mobile-menu-backdrop"></div>
+        <div class="absolute top-0 right-0 h-full w-[300px] bg-[#0a0a0a] border-l border-white/10 transform translate-x-full transition-transform duration-300 flex flex-col" id="mobile-menu-panel">
+            <div class="flex justify-end p-6">
+                <div class="text-white cursor-pointer p-2" id="mobile-menu-close">
+                    <iconify-icon icon="solar:close-circle-linear" width="32"></iconify-icon>
+                </div>
+            </div>
+            <nav class="flex flex-col px-8 space-y-6 mt-4">
+                <a href="/" class="mobile-link text-sm uppercase tracking-widest font-medium text-white border-b border-white/10 pb-4">Home</a>
+                <a href="/#services" class="mobile-link text-sm uppercase tracking-widest font-medium text-white border-b border-white/10 pb-4">Services</a>
+                <a href="/news" class="mobile-link text-sm uppercase tracking-widest font-medium text-white border-b border-white/10 pb-4">News</a>
+                <a href="/contact" class="mobile-link text-sm uppercase tracking-widest font-medium text-white border-b border-white/10 pb-4">Contact</a>
+            </nav>
+            <div class="mt-auto p-8 space-y-4">
+                <a href="tel:02071834547" class="flex items-center gap-3 text-white mb-4">
+                    <iconify-icon icon="solar:phone-calling-linear" width="20" class="text-[#C4A470]"></iconify-icon>
+                    <span class="text-lg">0207 183 4547</span>
+                </a>
+                <a href="/contact" class="mobile-link block text-center text-xs uppercase font-bold text-[#050615] tracking-widest bg-white hover:bg-gray-200 transition-colors rounded-sm py-4 w-full">
+                    Free Consultation
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="relative z-10 flex flex-col">
+        {% block content %}{% endblock %}
+
+        <!-- FOOTER -->
+        <footer class="bg-[#050615] border-t border-white/10 pt-16 pb-8">
+            <div class="max-w-[1400px] mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                    <!-- Brand -->
+                    <div class="md:col-span-1">
+                        <h3 class="font-serif text-2xl mb-3">Parachute <span class="text-[#C4A470] italic">Law</span></h3>
+                        <p class="text-gray-500 text-sm font-light leading-relaxed">No-nonsense family law. Fixed fees. 100% online. Your soft landing starts here.</p>
+                    </div>
+                    <!-- Services -->
+                    <div>
+                        <h4 class="text-xs uppercase tracking-widest font-medium text-white mb-4">Services</h4>
+                        <ul class="space-y-2 text-sm text-gray-500 font-light">
+                            <li><a href="/#services" class="hover:text-[#C4A470] transition-colors">Divorce & Separation</a></li>
+                            <li><a href="/#services" class="hover:text-[#C4A470] transition-colors">Financial Settlements</a></li>
+                            <li><a href="/#services" class="hover:text-[#C4A470] transition-colors">Wills & LPA</a></li>
+                            <li><a href="/#services" class="hover:text-[#C4A470] transition-colors">Employment Law</a></li>
+                        </ul>
+                    </div>
+                    <!-- Quick Links -->
+                    <div>
+                        <h4 class="text-xs uppercase tracking-widest font-medium text-white mb-4">Quick Links</h4>
+                        <ul class="space-y-2 text-sm text-gray-500 font-light">
+                            <li><a href="/news" class="hover:text-[#C4A470] transition-colors">News & Guides</a></li>
+                            <li><a href="/contact" class="hover:text-[#C4A470] transition-colors">Contact Us</a></li>
+                            <li><a href="/#book" class="hover:text-[#C4A470] transition-colors">Book Consultation</a></li>
+                        </ul>
+                    </div>
+                    <!-- Contact -->
+                    <div>
+                        <h4 class="text-xs uppercase tracking-widest font-medium text-white mb-4">Get in Touch</h4>
+                        <ul class="space-y-3 text-sm text-gray-500 font-light">
+                            <li class="flex items-start gap-2">
+                                <iconify-icon icon="solar:map-point-linear" width="16" class="text-[#C4A470] mt-0.5"></iconify-icon>
+                                27 Old Gloucester St, Holborn, London, WC1N 3AX
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <iconify-icon icon="solar:phone-calling-linear" width="16" class="text-[#C4A470]"></iconify-icon>
+                                <a href="tel:02071834547" class="hover:text-[#C4A470] transition-colors">0207 183 4547</a>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <iconify-icon icon="solar:letter-linear" width="16" class="text-[#C4A470]"></iconify-icon>
+                                <a href="mailto:thelegalteam@parachutelaw.co.uk" class="hover:text-[#C4A470] transition-colors">thelegalteam@parachutelaw.co.uk</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Bottom Bar -->
+                <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div class="text-center md:text-left">
+                        <p class="text-[10px] uppercase tracking-widest text-gray-500">
+                            &copy; 2026 Parachute Law Ltd. SRA No. 828076. All rights reserved.
+                        </p>
+                    </div>
+                    <div class="flex gap-6">
+                        <a href="#" class="text-gray-500 hover:text-[#C4A470] transition-colors">
+                            <iconify-icon icon="mdi:instagram" width="20"></iconify-icon>
+                        </a>
+                        <a href="#" class="text-gray-500 hover:text-[#C4A470] transition-colors">
+                            <iconify-icon icon="mdi:linkedin" width="20"></iconify-icon>
+                        </a>
+                        <a href="#" class="text-gray-500 hover:text-[#C4A470] transition-colors">
+                            <iconify-icon icon="mdi:facebook" width="20"></iconify-icon>
+                        </a>
+                    </div>
+                    <div class="flex gap-6 text-[10px] uppercase tracking-widest font-medium text-gray-500">
+                        <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                        <a href="#" class="hover:text-white transition-colors">Disclaimer</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Header Scroll Effect
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('py-2');
+                header.classList.remove('bg-[#050615]/80');
+                header.classList.add('bg-[#050615]/95', 'shadow-lg');
+            } else {
+                header.classList.remove('py-2', 'bg-[#050615]/95', 'shadow-lg');
+                header.classList.add('bg-[#050615]/80');
+            }
+        });
+
+        // Mobile Menu
+        const mobileTrigger = document.getElementById('mobile-menu-trigger');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobilePanel = document.getElementById('mobile-menu-panel');
+        const mobileClose = document.getElementById('mobile-menu-close');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            const isOpen = !mobileMenu.classList.contains('invisible');
+            if (isOpen) {
+                mobileMenu.classList.add('opacity-0', 'invisible', 'pointer-events-none');
+                mobileMenu.classList.remove('opacity-100', 'visible', 'pointer-events-auto');
+                mobilePanel.classList.add('translate-x-full');
+                document.body.style.overflow = '';
+            } else {
+                mobileMenu.classList.remove('opacity-0', 'invisible', 'pointer-events-none');
+                mobileMenu.classList.add('opacity-100', 'visible', 'pointer-events-auto');
+                mobilePanel.classList.remove('translate-x-full');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        mobileTrigger.addEventListener('click', toggleMenu);
+        mobileClose.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+        document.getElementById('mobile-menu-backdrop').addEventListener('click', toggleMenu);
+    </script>
+</body>
+</html>

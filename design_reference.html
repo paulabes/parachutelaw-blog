@@ -1,0 +1,485 @@
+<html lang="en" class="scroll-smooth"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shah &amp; Kishore | US Immigration Attorneys</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet">
+<style>
+body { font-family: 'Inter', sans-serif; }
+.font-serif { font-family: 'Playfair Display', serif; }
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #444; }
+/* Smooth Fade In */
+.fade-enter { opacity: 0; transform: translateY(10px); animation: fadeIn 0.6s forwards; }
+@keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+</style></head>
+
+<body class="bg-[#050615] text-white antialiased selection:bg-white selection:text-black overflow-x-hidden">
+
+    <!-- Fixed Hero Background -->
+    <div class="fixed top-0 w-full h-screen -z-10">
+        <!-- Using a high-end architectural/engineering abstract image to match "Engineering Immigration Solutions" tagline -->
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&amp;w=2670&amp;auto=format&amp;fit=crop'); opacity: 0.4;"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-[#050615] via-[#050615]/90 to-[#050615]/60"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#050615]/50 to-[#050615]"></div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="fixed transition-all duration-300 backdrop-blur-md z-50 w-full border-white/5 border-b top-0 bg-[#050615]/80" id="main-header">
+        <div class="lg:px-12 flex h-24 max-w-[1400px] mx-auto px-6 items-center justify-between">
+            
+            <!-- Logo Area -->
+            <a href="#" class="flex-shrink-0 flex items-center gap-3 z-50">
+                <!-- Using text logo for maximum clarity on dark theme, mimicking the clean legal style -->
+                <div class="flex flex-col">
+                    <h1 class="font-serif text-2xl tracking-tight leading-none text-white font-medium">Shah &amp; <span class="text-[#C4A470] italic">Kishore</span></h1>
+                    <span class="text-[9px] tracking-[0.2em] uppercase text-gray-400 mt-1">US Immigration Attorneys</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden xl:flex flex-1 space-x-8 items-center justify-center ml-10">
+                <a href="#about" class="text-[11px] hover:text-[#C4A470] transition-colors uppercase font-medium text-gray-300 tracking-widest">About Us</a>
+                
+                <div class="relative group">
+                    <a href="#services" class="text-[11px] hover:text-[#C4A470] transition-colors uppercase flex items-center gap-1 font-medium text-gray-300 tracking-widest py-6">
+                        Visas &amp; Services
+                        <iconify-icon icon="solar:alt-arrow-down-linear" width="12"></iconify-icon>
+                    </a>
+                </div>
+
+                <a href="#resources" class="text-[11px] hover:text-[#C4A470] transition-colors uppercase font-medium text-gray-300 tracking-widest">Resources</a>
+                <a href="https://secure.lawpay.com/pages/shah-and-kishore/operating" target="_blank" class="text-[11px] hover:text-[#C4A470] transition-colors uppercase font-medium text-gray-300 tracking-widest">Pay Online</a>
+                <a href="#contact" class="text-[11px] hover:text-[#C4A470] transition-colors uppercase font-medium text-gray-300 tracking-widest">Contact</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="hidden xl:flex items-center gap-6 justify-end">
+                <a href="tel:3013150001" class="flex items-center gap-2 text-white hover:text-[#C4A470] transition-colors">
+                    <div class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center">
+                        <iconify-icon icon="solar:phone-calling-linear" width="14"></iconify-icon>
+                    </div>
+                    <span class="text-sm font-medium">301-315-0001</span>
+                </a>
+                <a href="#book" class="inline-flex items-center justify-center text-[11px] hover:bg-gray-200 transition-colors uppercase font-semibold text-black tracking-widest bg-white rounded-sm pt-3 pr-6 pb-3 pl-6">
+                    Book Consultation
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <div class="xl:hidden text-white cursor-pointer ml-auto z-50 p-2" id="mobile-menu-trigger">
+                <iconify-icon icon="solar:hamburger-menu-linear" width="28" height="28"></iconify-icon>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay (Hidden by Default) -->
+    <div id="mobile-menu" class="fixed inset-0 z-[99999] pointer-events-none opacity-0 invisible transition-all duration-300 xl:hidden">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-md" id="mobile-menu-backdrop"></div>
+
+        <!-- Menu Panel -->
+        <div class="absolute top-0 right-0 h-full w-[300px] bg-[#0a0a0a] border-l border-white/10 transform translate-x-full transition-transform duration-300 flex flex-col" id="mobile-menu-panel">
+            
+            <div class="flex justify-end p-6">
+                <div class="text-white cursor-pointer p-2" id="mobile-menu-close">
+                    <iconify-icon icon="solar:close-circle-linear" width="32"></iconify-icon>
+                </div>
+            </div>
+
+            <nav class="flex flex-col px-8 space-y-6 mt-4">
+                <a href="#about" class="mobile-link text-sm uppercase tracking-widest font-medium text-white border-b border-white/10 pb-4">About Us</a>
+                <a href="#services" class="mobile-link text-sm uppercase tracking-widest font-medium text-white border-b border-white/10 pb-4">Immigration Services</a>
+                <a href="#resources" class="mobile-link text-sm uppercase tracking-widest font-medium text-white border-b border-white/10 pb-4">Resources</a>
+                <a href="https://secure.lawpay.com/pages/shah-and-kishore/operating" class="mobile-link text-sm uppercase tracking-widest font-medium text-white border-b border-white/10 pb-4">Make a Payment</a>
+                <a href="#contact" class="mobile-link text-sm uppercase tracking-widest font-medium text-white border-b border-white/10 pb-4">Contact Us</a>
+            </nav>
+
+            <div class="mt-auto p-8 space-y-4">
+                <a href="tel:3013150001" class="flex items-center gap-3 text-white mb-4">
+                    <iconify-icon icon="solar:phone-calling-linear" width="20" class="text-[#C4A470]"></iconify-icon>
+                    <span class="text-lg">301-315-0001</span>
+                </a>
+                <a href="#book" class="mobile-link block text-center text-xs uppercase font-bold text-[#050615] tracking-widest bg-white hover:bg-gray-200 transition-colors rounded-sm py-4 w-full">
+                    Request Appointment
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="relative z-10 flex flex-col">
+
+        <!-- HERO SECTION -->
+        <section class="min-h-screen flex items-center justify-center lg:px-12 px-6 pt-32 pb-20">
+            <div class="max-w-[1400px] w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+                
+                <div class="lg:col-span-8 flex flex-col">
+                    <div class="mb-8 pl-1 flex items-center gap-3">
+                        <span class="w-12 h-[1px] bg-[#C4A470]"></span>
+                        <span class="text-[11px] tracking-[0.25em] text-[#C4A470] uppercase font-medium">
+                            Celebrating 30 Years of Service
+                        </span>
+                    </div>
+
+                    <h1 class="leading-[1.1] text-5xl md:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] text-white tracking-tight font-serif mb-8">
+                        Engineering <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50 italic">Immigration Solutions.</span>
+                    </h1>
+
+                    <p class="text-base lg:text-lg text-gray-400 font-light leading-relaxed max-w-xl mb-10">
+                        We offer more than sound legal advice, we offer a partner to share your vision. Specialized in Investment Visas, Employment Visas, and complex immigration matters.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-5">
+                        <a href="#book" class="inline-flex items-center justify-center px-8 py-4 bg-[#C4A470] hover:bg-[#a38656] text-white text-[11px] uppercase tracking-[0.2em] font-medium transition-all duration-300 rounded-sm">
+                            Request Appointment
+                        </a>
+                        <a href="tel:3013150001" class="inline-flex items-center justify-center px-8 py-4 border border-white/20 hover:bg-white hover:text-black text-white text-[11px] uppercase tracking-[0.2em] font-medium transition-all duration-300 rounded-sm">
+                            Call 301-315-0001
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Trust Strip (Desktop) -->
+                <div class="hidden lg:flex lg:col-span-4 flex-col justify-end space-y-8 border-l border-white/10 pl-10 pb-4">
+                    <div class="group cursor-pointer">
+                        <h3 class="text-white font-serif text-2xl mb-1 group-hover:text-[#C4A470] transition-colors">30+ Years</h3>
+                        <p class="text-gray-500 text-xs uppercase tracking-widest">Experience</p>
+                    </div>
+                    <div class="group cursor-pointer">
+                        <h3 class="text-white font-serif text-2xl mb-1 group-hover:text-[#C4A470] transition-colors">Rockville, MD</h3>
+                        <p class="text-gray-500 text-xs uppercase tracking-widest">Primary Location</p>
+                    </div>
+                    <div class="group cursor-pointer">
+                        <h3 class="text-white font-serif text-2xl mb-1 group-hover:text-[#C4A470] transition-colors">Specialized</h3>
+                        <p class="text-gray-500 text-xs uppercase tracking-widest">In Business Immigration</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES HUB -->
+        <section id="services" class="py-24 bg-white text-[#050615]">
+            <div class="max-w-[1200px] mx-auto px-6">
+                
+                <div class="text-center mb-20">
+                    <span class="text-[10px] tracking-[0.25em] text-[#C4A470] uppercase font-medium block mb-4">Our Expertise</span>
+                    <h2 class="text-4xl md:text-5xl font-serif text-[#050615] mb-6">Legal Practice Areas</h2>
+                    <div class="w-16 h-[1px] bg-[#C4A470] mx-auto mb-6"></div>
+                    <p class="text-gray-500 max-w-2xl mx-auto font-light leading-relaxed">
+                        Comprehensive immigration strategies for investors, businesses, and families.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-200 border border-gray-200">
+                    
+                    <!-- Service 1: Investment -->
+                    <div class="bg-white p-12 group hover:bg-[#050615] hover:text-white transition-all duration-500">
+                        <div class="w-12 h-12 rounded-full border border-gray-200 group-hover:border-[#C4A470] flex items-center justify-center text-[#C4A470] mb-8 transition-colors">
+                            <iconify-icon icon="solar:graph-up-linear" width="24"></iconify-icon>
+                        </div>
+                        <h3 class="text-xl font-serif mb-4">Investment Visas</h3>
+                        <ul class="space-y-2 mb-8 text-sm text-gray-500 group-hover:text-gray-400 font-light">
+                            <li>• E-1 (Treaty Trader)</li>
+                            <li>• E-2 (Treaty Investor)</li>
+                            <li>• EB-5 Immigrant Investor</li>
+                        </ul>
+                        <span class="text-[10px] uppercase tracking-[0.2em] font-medium text-[#C4A470] group-hover:text-white transition-colors">Learn More →</span>
+                    </div>
+
+                    <!-- Service 2: Employment -->
+                    <div class="bg-white p-12 group hover:bg-[#050615] hover:text-white transition-all duration-500">
+                        <div class="w-12 h-12 rounded-full border border-gray-200 group-hover:border-[#C4A470] flex items-center justify-center text-[#C4A470] mb-8 transition-colors">
+                            <iconify-icon icon="solar:case-round-linear" width="24"></iconify-icon>
+                        </div>
+                        <h3 class="text-xl font-serif mb-4">Employment Visas</h3>
+                        <ul class="space-y-2 mb-8 text-sm text-gray-500 group-hover:text-gray-400 font-light">
+                            <li>• H-1B &amp; H-1B1</li>
+                            <li>• L-1 Intracompany Transferee</li>
+                            <li>• TN (NAFTA) &amp; E-3</li>
+                        </ul>
+                        <span class="text-[10px] uppercase tracking-[0.2em] font-medium text-[#C4A470] group-hover:text-white transition-colors">Learn More →</span>
+                    </div>
+
+                    <!-- Service 3: Green Card -->
+                    <div class="bg-white p-12 group hover:bg-[#050615] hover:text-white transition-all duration-500">
+                        <div class="w-12 h-12 rounded-full border border-gray-200 group-hover:border-[#C4A470] flex items-center justify-center text-[#C4A470] mb-8 transition-colors">
+                            <iconify-icon icon="solar:card-linear" width="24"></iconify-icon>
+                        </div>
+                        <h3 class="text-xl font-serif mb-4">Green Card</h3>
+                        <ul class="space-y-2 mb-8 text-sm text-gray-500 group-hover:text-gray-400 font-light">
+                            <li>• Employment Based</li>
+                            <li>• Family Based (Spouse/Fiancé)</li>
+                            <li>• Sponsoring Parents/Children</li>
+                        </ul>
+                        <span class="text-[10px] uppercase tracking-[0.2em] font-medium text-[#C4A470] group-hover:text-white transition-colors">Learn More →</span>
+                    </div>
+
+                    <!-- Service 4: Naturalization -->
+                    <div class="bg-white p-12 group hover:bg-[#050615] hover:text-white transition-all duration-500">
+                        <div class="w-12 h-12 rounded-full border border-gray-200 group-hover:border-[#C4A470] flex items-center justify-center text-[#C4A470] mb-8 transition-colors">
+                            <iconify-icon icon="solar:flag-linear" width="24"></iconify-icon>
+                        </div>
+                        <h3 class="text-xl font-serif mb-4">Naturalization</h3>
+                        <p class="text-sm text-gray-500 group-hover:text-gray-400 font-light mb-8 leading-relaxed">
+                            Guiding permanent residents through the N-400 process to become US citizens.
+                        </p>
+                        <span class="text-[10px] uppercase tracking-[0.2em] font-medium text-[#C4A470] group-hover:text-white transition-colors">Learn More →</span>
+                    </div>
+
+                    <!-- Service 5: Resources -->
+                    <div class="bg-white p-12 group hover:bg-[#050615] hover:text-white transition-all duration-500">
+                        <div class="w-12 h-12 rounded-full border border-gray-200 group-hover:border-[#C4A470] flex items-center justify-center text-[#C4A470] mb-8 transition-colors">
+                            <iconify-icon icon="solar:folder-open-linear" width="24"></iconify-icon>
+                        </div>
+                        <h3 class="text-xl font-serif mb-4">Resources</h3>
+                        <p class="text-sm text-gray-500 group-hover:text-gray-400 font-light mb-8 leading-relaxed">
+                            Access our AOS360 View, PW Finder, and other immigration tools.
+                        </p>
+                        <span class="text-[10px] uppercase tracking-[0.2em] font-medium text-[#C4A470] group-hover:text-white transition-colors">View Tools →</span>
+                    </div>
+
+                    <!-- Service 6: Student Visas -->
+                    <div class="bg-white p-12 group hover:bg-[#050615] hover:text-white transition-all duration-500">
+                        <div class="w-12 h-12 rounded-full border border-gray-200 group-hover:border-[#C4A470] flex items-center justify-center text-[#C4A470] mb-8 transition-colors">
+                            <iconify-icon icon="solar:diploma-linear" width="24"></iconify-icon>
+                        </div>
+                        <h3 class="text-xl font-serif mb-4">Student Status</h3>
+                        <p class="text-sm text-gray-500 group-hover:text-gray-400 font-light mb-8 leading-relaxed">
+                            F-1 Student Visa assistance, change of status, and OPT/STEM guidance.
+                        </p>
+                        <span class="text-[10px] uppercase tracking-[0.2em] font-medium text-[#C4A470] group-hover:text-white transition-colors">Learn More →</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BOOKING / FORM SECTION -->
+        <section id="book" class="py-24 bg-[#050615] relative overflow-hidden">
+            <!-- Background Accent -->
+            <div class="absolute top-0 right-0 w-1/2 h-full bg-[#0a0c24] -skew-x-12 translate-x-32 hidden lg:block pointer-events-none"></div>
+
+            <div class="max-w-[1200px] mx-auto px-6 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+                    
+                    <!-- Info Column -->
+                    <div class="flex flex-col justify-center">
+                        <span class="text-[10px] tracking-[0.25em] text-[#C4A470] uppercase font-medium mb-6">Start Your Journey</span>
+                        <h2 class="text-4xl md:text-5xl font-serif text-white mb-6">Request Appointment</h2>
+                        <p class="text-gray-400 font-light leading-relaxed mb-10 max-w-md">
+                            Connect with Shah &amp; Kishore today. Fill out the form below to request a consultation regarding your immigration matter.
+                        </p>
+
+                        <!-- FAQ Mini -->
+                        <div class="space-y-6">
+                            <div class="border-l border-[#C4A470] pl-6">
+                                <h4 class="text-white text-sm font-medium mb-2 uppercase tracking-wide">Office Hours</h4>
+                                <p class="text-gray-400 text-sm font-light">Mon - Fri: 9:00 AM - 5:00 PM EST</p>
+                            </div>
+                            <div class="border-l border-[#C4A470] pl-6">
+                                <h4 class="text-white text-sm font-medium mb-2 uppercase tracking-wide">Location</h4>
+                                <p class="text-gray-400 text-sm font-light">9201 Corporate Blvd. Suite 330<br>Rockville, MD 20850</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Column -->
+                    <div class="bg-white p-8 md:p-12 rounded-sm shadow-2xl">
+                        <form class="space-y-5">
+                            <div class="grid grid-cols-2 gap-5">
+                                <div class="col-span-2 md:col-span-1">
+                                    <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">First Name *</label>
+                                    <input type="text" class="w-full bg-gray-50 border border-gray-200 p-3 text-black focus:outline-none focus:border-[#C4A470] focus:ring-1 focus:ring-[#C4A470] transition-all rounded-sm">
+                                </div>
+                                <div class="col-span-2 md:col-span-1">
+                                    <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Last Name *</label>
+                                    <input type="text" class="w-full bg-gray-50 border border-gray-200 p-3 text-black focus:outline-none focus:border-[#C4A470] focus:ring-1 focus:ring-[#C4A470] transition-all rounded-sm">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-5">
+                                <div class="col-span-2 md:col-span-1">
+                                    <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Email *</label>
+                                    <input type="email" class="w-full bg-gray-50 border border-gray-200 p-3 text-black focus:outline-none focus:border-[#C4A470] focus:ring-1 focus:ring-[#C4A470] transition-all rounded-sm">
+                                </div>
+                                <div class="col-span-2 md:col-span-1">
+                                    <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Phone *</label>
+                                    <input type="tel" class="w-full bg-gray-50 border border-gray-200 p-3 text-black focus:outline-none focus:border-[#C4A470] focus:ring-1 focus:ring-[#C4A470] transition-all rounded-sm">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Visa Type / Service</label>
+                                <div class="relative">
+                                    <select class="w-full bg-gray-50 border border-gray-200 p-3 text-black focus:outline-none focus:border-[#C4A470] focus:ring-1 focus:ring-[#C4A470] transition-all rounded-sm appearance-none">
+                                        <option>Select Service...</option>
+                                        <option>Investment Visa (E-1, E-2, EB-5)</option>
+                                        <option>Employment Visa (H-1B, L-1, TN)</option>
+                                        <option>Green Card (Family/Employment)</option>
+                                        <option>Naturalization</option>
+                                        <option>Other / Not Sure</option>
+                                    </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+                                        <iconify-icon icon="solar:alt-arrow-down-linear" width="12"></iconify-icon>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Message</label>
+                                <textarea rows="4" class="w-full bg-gray-50 border border-gray-200 p-3 text-black focus:outline-none focus:border-[#C4A470] focus:ring-1 focus:ring-[#C4A470] transition-all rounded-sm resize-none"></textarea>
+                            </div>
+
+                            <button type="button" class="w-full bg-[#050615] text-white font-bold uppercase tracking-[0.15em] text-xs py-4 hover:bg-[#C4A470] hover:text-white transition-colors duration-300 mt-2">
+                                Submit Request
+                            </button>
+                            
+                            <p class="text-[10px] text-gray-400 text-center pt-2 italic">
+                                Note: Our team will contact you to confirm available times.
+                            </p>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- LOCATIONS HUB -->
+        <section class="py-24 bg-gray-50 border-t border-gray-200 text-black" id="contact">
+            <div class="max-w-[1200px] mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-serif text-[#050615] mb-4">Contact Us</h2>
+                    <div class="w-12 h-[1px] bg-[#C4A470] mx-auto"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <!-- Map/Image Area -->
+                    <div class="h-[400px] bg-gray-200 rounded-sm overflow-hidden relative">
+                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3096.356247754438!2d-77.19304902357388!3d39.09838967168231!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7cd6bd9b0b6d1%3A0x6b6e4e8e8e8e8e8e!2s9201%20Corporate%20Blvd%20%23330%2C%20Rockville%2C%20MD%2020850!5e0!3m2!1sen!2sus!4v1709234567890!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="grayscale"></iframe>
+                    </div>
+
+                    <!-- Contact Details -->
+                    <div class="flex flex-col justify-center space-y-8">
+                        <div>
+                            <h3 class="text-2xl font-serif text-[#050615] mb-2">Rockville Office</h3>
+                            <p class="text-sm text-gray-500 font-light max-w-sm">Serving clients across Maryland and Nationwide for Federal Immigration matters.</p>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-4">
+                                <div class="text-[#C4A470] mt-1">
+                                    <iconify-icon icon="solar:map-point-linear" width="20"></iconify-icon>
+                                </div>
+                                <div>
+                                    <span class="block text-xs uppercase tracking-widest text-gray-400 mb-1">Address</span>
+                                    <p class="text-[#050615] text-sm">9201 Corporate Blvd. Suite 330<br>Rockville, MD, 20850</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="text-[#C4A470] mt-1">
+                                    <iconify-icon icon="solar:phone-calling-linear" width="20"></iconify-icon>
+                                </div>
+                                <div>
+                                    <span class="block text-xs uppercase tracking-widest text-gray-400 mb-1">Phone</span>
+                                    <a href="tel:3013150001" class="text-[#050615] text-sm hover:text-[#C4A470] transition-colors">301-315-0001</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-6">
+                            <a href="https://www.google.com/maps/dir//9201+Corporate+Blvd+%23330,+Rockville,+MD+20850" target="_blank" class="inline-flex items-center text-xs uppercase tracking-widest font-bold text-[#C4A470] hover:text-[#050615] transition-colors border-b border-[#C4A470] pb-1">
+                                Get Directions <iconify-icon icon="solar:arrow-right-linear" width="16" class="ml-2"></iconify-icon>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="bg-white border-t border-gray-100 py-16 text-[#050615]">
+            <div class="max-w-[1400px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+                
+                <div class="text-center md:text-left">
+                    <p class="font-serif text-lg mb-1">Shah &amp; Kishore</p>
+                    <p class="text-[10px] uppercase tracking-widest text-gray-400">Copyright © 2026. All rights reserved.</p>
+                </div>
+
+                <div class="flex gap-6">
+                    <a href="https://www.facebook.com/shahkishorelaw" target="_blank" class="text-gray-400 hover:text-[#C4A470] transition-colors">
+                        <iconify-icon icon="brandico:facebook-rect" width="20"></iconify-icon>
+                    </a>
+                    <a href="https://www.tiktok.com/@devangshahattorney" target="_blank" class="text-gray-400 hover:text-[#C4A470] transition-colors">
+                        <iconify-icon icon="ic:baseline-tiktok" width="20"></iconify-icon>
+                    </a>
+                </div>
+
+                <div class="flex gap-6 text-[10px] uppercase tracking-widest font-medium text-gray-400">
+                    <a href="https://shahandkishore.com/disclaimer/" target="_blank" class="hover:text-[#050615] transition-colors">Disclaimer</a>
+                    <a href="https://secure.lawpay.com/pages/shah-and-kishore/operating" target="_blank" class="hover:text-[#050615] transition-colors">LawPay</a>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Header Scroll Effect
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('py-2');
+                header.classList.remove('bg-[#050615]/80');
+                header.classList.add('bg-[#050615]/95', 'shadow-lg');
+            } else {
+                header.classList.remove('py-2', 'bg-[#050615]/95', 'shadow-lg');
+                header.classList.add('bg-[#050615]/80');
+            }
+        });
+
+        // Mobile Menu Logic (Hidden by Default)
+        const mobileTrigger = document.getElementById('mobile-menu-trigger');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobilePanel = document.getElementById('mobile-menu-panel');
+        const mobileClose = document.getElementById('mobile-menu-close');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            const isOpen = !mobileMenu.classList.contains('invisible');
+            
+            if (isOpen) {
+                // Close
+                mobileMenu.classList.add('opacity-0', 'invisible', 'pointer-events-none');
+                mobileMenu.classList.remove('opacity-100', 'visible', 'pointer-events-auto');
+                mobilePanel.classList.add('translate-x-full');
+                document.body.style.overflow = '';
+            } else {
+                // Open
+                mobileMenu.classList.remove('opacity-0', 'invisible', 'pointer-events-none');
+                mobileMenu.classList.add('opacity-100', 'visible', 'pointer-events-auto');
+                mobilePanel.classList.remove('translate-x-full');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        mobileTrigger.addEventListener('click', toggleMenu);
+        mobileClose.addEventListener('click', toggleMenu);
+        
+        // Close menu when clicking a link
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+
+        // Close on backdrop click
+        document.getElementById('mobile-menu-backdrop').addEventListener('click', toggleMenu);
+    </script>
+
+</body></html>
