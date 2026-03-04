@@ -32,3 +32,30 @@ def write(topic: str, research_brief: str) -> str:
         ],
     )
     return message.content[0].text
+
+
+def rewrite(topic: str, research_brief: str, previous_draft: str, audit_feedback: str) -> str:
+    """Rewrite a draft incorporating audit feedback."""
+    system_prompt = PROMPT_PATH.read_text(encoding="utf-8")
+
+    client = Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+
+    message = client.messages.create(
+        model="claude-sonnet-4-5-20250929",
+        max_tokens=4096,
+        system=system_prompt,
+        messages=[
+            {
+                "role": "user",
+                "content": (
+                    f"Rewrite this blog post for ParachuteLaw.co.uk on the topic: {topic}\n\n"
+                    f"The previous draft FAILED a legal compliance audit. "
+                    f"Fix every issue raised below while keeping the same tone and structure.\n\n"
+                    f"--- RESEARCH BRIEF ---\n{research_brief}\n\n"
+                    f"--- PREVIOUS DRAFT ---\n{previous_draft}\n\n"
+                    f"--- AUDIT FEEDBACK ---\n{audit_feedback}"
+                ),
+            }
+        ],
+    )
+    return message.content[0].text

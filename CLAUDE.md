@@ -20,7 +20,8 @@ See `parachute_spec.md` for the full project spec.
 ├── parachute_spec.md      # Full project specification
 ├── .claude/
 │   └── commands/          # Slash commands (/prime, /create-plan, /implement)
-├── main.py                # Entry point: accepts --topic argument
+├── main.py                # CLI entry point: accepts --topic argument
+├── pipeline.py            # Shared pipeline function (used by CLI + web API)
 ├── agents/
 │   ├── __init__.py
 │   ├── researcher.py      # Gemini Logic (Scout)
@@ -112,6 +113,8 @@ python site/app.py
 Pages: Home (`/`), Contact (`/contact`), News (`/news`), Article (`/news/<slug>`)
 
 The `/news` page auto-discovers `.md` files from `output/` — generate articles with the content engine and they appear instantly.
+
+The `/news` page also has a dropdown + "Generate Article" button that triggers article generation via API (`POST /api/generate`, `GET /api/generate/<task_id>`). A loading card appears at the top of the grid and resolves to a real card when generation completes.
 
 ---
 

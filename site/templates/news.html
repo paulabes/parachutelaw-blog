@@ -17,11 +17,53 @@
     </div>
 </section>
 
+<!-- Generate Article -->
+<section class="pb-12 lg:px-12 px-6">
+    <div class="max-w-[1200px] mx-auto">
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <div class="flex rounded-sm overflow-hidden border border-gray-700">
+                <button id="mode-original" onclick="setMode('original')" class="px-4 py-3 text-[10px] uppercase tracking-[0.15em] font-medium transition-all bg-[#C4A470] text-white">Original</button>
+                <button id="mode-outrank" onclick="setMode('outrank')" class="px-4 py-3 text-[10px] uppercase tracking-[0.15em] font-medium transition-all bg-[#0a0b1a] text-gray-400 hover:text-white">Outrank</button>
+            </div>
+            <select id="area-select" class="bg-[#0a0b1a] border border-gray-700 text-gray-300 text-sm rounded-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#C4A470] focus:border-transparent transition-all">
+                <option value="" disabled selected>Select a practice area&hellip;</option>
+                <optgroup label="Divorce & Family">
+                    <option value="Divorce & Separation">Divorce & Separation</option>
+                    <option value="Financial Settlement & Consent Orders">Financial Settlement & Consent Orders</option>
+                    <option value="Pension Sharing in Divorce">Pension Sharing in Divorce</option>
+                    <option value="Child Arrangements Orders">Child Arrangements Orders</option>
+                    <option value="Clean Break Orders">Clean Break Orders</option>
+                    <option value="Spousal Maintenance">Spousal Maintenance</option>
+                </optgroup>
+                <optgroup label="Property">
+                    <option value="Buying & Selling Property">Buying & Selling Property</option>
+                    <option value="Transfer of Equity">Transfer of Equity</option>
+                    <option value="Deeds of Trust">Deeds of Trust</option>
+                    <option value="Property Disputes">Property Disputes</option>
+                    <option value="Equity Release">Equity Release</option>
+                </optgroup>
+                <optgroup label="Wills, LPA & Probate">
+                    <option value="Wills & Estate Planning">Wills & Estate Planning</option>
+                    <option value="Lasting Power of Attorney">Lasting Power of Attorney</option>
+                    <option value="Probate">Probate</option>
+                </optgroup>
+                <optgroup label="Employment & Business">
+                    <option value="Settlement Agreements">Settlement Agreements</option>
+                    <option value="Shareholders Agreements">Shareholders Agreements</option>
+                </optgroup>
+            </select>
+            <button id="generate-btn" onclick="generateArticle()" class="px-8 py-3 bg-[#C4A470] hover:bg-[#a38656] text-white text-[11px] uppercase tracking-[0.2em] font-medium transition-all duration-300 rounded-sm disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                Generate Article
+            </button>
+        </div>
+    </div>
+</section>
+
 <!-- Blog Grid -->
 <section class="py-16 bg-white text-[#050615]">
     <div class="max-w-[1200px] mx-auto px-6">
         {% if posts %}
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {% for post in posts %}
             <a href="/news/{{ post.slug }}" class="group block bg-white border border-gray-200 rounded-sm overflow-hidden hover:shadow-xl transition-all duration-300">
                 <!-- Category Bar -->
@@ -39,7 +81,9 @@
             {% endfor %}
         </div>
         {% else %}
-        <div class="text-center py-20">
+        <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        </div>
+        <div id="empty-state" class="text-center py-20">
             <iconify-icon icon="solar:pen-new-round-linear" width="64" class="text-gray-300 mb-6"></iconify-icon>
             <h3 class="text-2xl font-serif text-[#050615] mb-4">New Articles Coming Soon</h3>
             <p class="text-gray-500 font-light max-w-md mx-auto">
@@ -60,5 +104,129 @@
         </a>
     </div>
 </section>
+
+<script>
+const select = document.getElementById('area-select');
+const btn = document.getElementById('generate-btn');
+let mode = 'original';
+
+function setMode(m) {
+    mode = m;
+    const origBtn = document.getElementById('mode-original');
+    const outBtn = document.getElementById('mode-outrank');
+    if (m === 'original') {
+        origBtn.className = 'px-4 py-3 text-[10px] uppercase tracking-[0.15em] font-medium transition-all bg-[#C4A470] text-white';
+        outBtn.className = 'px-4 py-3 text-[10px] uppercase tracking-[0.15em] font-medium transition-all bg-[#0a0b1a] text-gray-400 hover:text-white';
+    } else {
+        outBtn.className = 'px-4 py-3 text-[10px] uppercase tracking-[0.15em] font-medium transition-all bg-[#C4A470] text-white';
+        origBtn.className = 'px-4 py-3 text-[10px] uppercase tracking-[0.15em] font-medium transition-all bg-[#0a0b1a] text-gray-400 hover:text-white';
+    }
+}
+
+select.addEventListener('change', () => {
+    btn.disabled = !select.value;
+});
+
+function generateArticle() {
+    const area = select.value;
+    if (!area) return;
+
+    btn.disabled = true;
+    btn.textContent = 'GENERATING…';
+    select.disabled = true;
+
+    const modeLabel = mode === 'outrank' ? 'Outranking competitor on' : 'Generating article on';
+
+    // Hide empty state if present
+    const empty = document.getElementById('empty-state');
+    if (empty) empty.style.display = 'none';
+
+    // Insert loading placeholder at top of grid
+    const grid = document.getElementById('blog-grid');
+    const placeholder = document.createElement('div');
+    placeholder.id = 'loading-card';
+    placeholder.className = 'block bg-white border border-gray-200 rounded-sm overflow-hidden';
+    placeholder.innerHTML = `
+        <div class="bg-[#050615] px-6 py-3 flex items-center justify-between">
+            <span class="text-[10px] uppercase tracking-widest text-[#C4A470] font-medium animate-pulse">${mode === 'outrank' ? 'Outranking…' : 'Generating…'}</span>
+            <span class="text-[10px] uppercase tracking-widest text-gray-500">&nbsp;</span>
+        </div>
+        <div class="p-8">
+            <div class="animate-pulse space-y-4">
+                <div class="h-6 bg-gray-200 rounded w-3/4"></div>
+                <div class="h-4 bg-gray-100 rounded w-full"></div>
+                <div class="h-4 bg-gray-100 rounded w-5/6"></div>
+                <div class="h-4 bg-gray-100 rounded w-2/3"></div>
+            </div>
+            <p class="text-xs text-gray-400 mt-6 font-light">${modeLabel} ${area}…</p>
+        </div>
+    `;
+    grid.insertBefore(placeholder, grid.firstChild);
+
+    // Start generation
+    fetch('/api/generate', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({area: area, mode: mode})
+    })
+    .then(r => r.json())
+    .then(data => {
+        if (data.error) throw new Error(data.error);
+        pollStatus(data.task_id);
+    })
+    .catch(err => {
+        placeholder.remove();
+        resetControls();
+        alert('Failed to start generation: ' + err.message);
+    });
+}
+
+function pollStatus(taskId) {
+    const interval = setInterval(() => {
+        fetch('/api/generate/' + taskId)
+        .then(r => r.json())
+        .then(data => {
+            if (data.status === 'running') return;
+            clearInterval(interval);
+
+            const placeholder = document.getElementById('loading-card');
+
+            if (data.status === 'done') {
+                const post = data.post;
+                const card = document.createElement('a');
+                card.href = '/news/' + post.slug;
+                card.className = 'group block bg-white border border-gray-200 rounded-sm overflow-hidden hover:shadow-xl transition-all duration-300';
+                card.innerHTML = `
+                    <div class="bg-[#050615] px-6 py-3 flex items-center justify-between">
+                        <span class="text-[10px] uppercase tracking-widest text-[#C4A470] font-medium">${post.category}</span>
+                        <span class="text-[10px] uppercase tracking-widest text-gray-500">${post.date_formatted}</span>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-serif text-[#050615] mb-4 group-hover:text-[#C4A470] transition-colors leading-tight">${post.title}</h3>
+                        <p class="text-sm text-gray-500 font-light leading-relaxed mb-6">${post.excerpt}</p>
+                        <span class="text-[10px] uppercase tracking-[0.2em] font-medium text-[#C4A470] group-hover:text-[#050615] transition-colors">Read Article &rarr;</span>
+                    </div>
+                `;
+                placeholder.replaceWith(card);
+            } else {
+                placeholder.remove();
+                alert('Generation failed: ' + (data.message || 'Unknown error'));
+            }
+            resetControls();
+        })
+        .catch(() => {
+            clearInterval(interval);
+            document.getElementById('loading-card')?.remove();
+            resetControls();
+        });
+    }, 3000);
+}
+
+function resetControls() {
+    btn.textContent = 'GENERATE ARTICLE';
+    btn.disabled = !select.value;
+    select.disabled = false;
+}
+</script>
 
 {% endblock %}
