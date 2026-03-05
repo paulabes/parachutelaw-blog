@@ -151,28 +151,32 @@ function generateArticle() {
             <span class="text-[10px] uppercase tracking-widest text-[#C4A470] font-medium animate-pulse">${mode === 'outrank' ? 'Outranking…' : 'Generating…'}</span>
             <span class="text-[10px] uppercase tracking-widest text-gray-500">&nbsp;</span>
         </div>
-        <div class="p-8">
-            <p class="text-sm font-medium text-[#050615] mb-1">${modeLabel} <span class="text-[#C4A470]">${area}</span></p>
-            <p id="loading-timer" class="text-[10px] text-gray-400 mb-4 font-mono">0:00</p>
-            <div id="loading-steps" class="space-y-2.5 text-xs">
-                <div data-step="Researching" class="flex items-center gap-2.5 text-gray-300">
-                    <span class="step-icon w-4 text-center flex-shrink-0">○</span>
+        <div class="p-6">
+            <div class="flex items-center justify-between mb-4">
+                <p class="text-sm font-medium text-[#050615]">${modeLabel} <span class="text-[#C4A470]">${area}</span></p>
+                <p id="loading-timer" class="text-xs text-gray-500 font-mono tabular-nums">0:00</p>
+            </div>
+            <div id="loading-steps" class="space-y-3 text-sm mb-4">
+                <div data-step="Researching" class="flex items-center gap-3 text-gray-400">
+                    <span class="step-icon w-5 text-center flex-shrink-0 text-base">○</span>
                     <span class="step-label">Research via Gemini</span>
                 </div>
-                <div data-step="Writing" class="flex items-center gap-2.5 text-gray-300">
-                    <span class="step-icon w-4 text-center flex-shrink-0">○</span>
+                <div data-step="Writing" class="flex items-center gap-3 text-gray-400">
+                    <span class="step-icon w-5 text-center flex-shrink-0 text-base">○</span>
                     <span class="step-label">Write article via Claude</span>
                 </div>
-                <div data-step="Auditing" class="flex items-center gap-2.5 text-gray-300">
-                    <span class="step-icon w-4 text-center flex-shrink-0">○</span>
+                <div data-step="Auditing" class="flex items-center gap-3 text-gray-400">
+                    <span class="step-icon w-5 text-center flex-shrink-0 text-base">○</span>
                     <span class="step-label">Fact-check via Gemini</span>
                 </div>
-                <div data-step="Saving" class="flex items-center gap-2.5 text-gray-300">
-                    <span class="step-icon w-4 text-center flex-shrink-0">○</span>
+                <div data-step="Saving" class="flex items-center gap-3 text-gray-400">
+                    <span class="step-icon w-5 text-center flex-shrink-0 text-base">○</span>
                     <span class="step-label">Save article</span>
                 </div>
             </div>
-            <p id="loading-comment" class="text-[11px] text-gray-400 mt-4 italic leading-relaxed">Starting up&hellip; this usually takes 2-4 minutes.</p>
+            <div class="border-t border-gray-100 pt-3">
+                <p id="loading-comment" class="text-xs text-gray-500 italic leading-relaxed">Starting pipeline&hellip; this usually takes 2&ndash;4 minutes.</p>
+            </div>
         </div>
     `;
     grid.insertBefore(placeholder, grid.firstChild);
@@ -220,6 +224,19 @@ function startTimer() {
         const m = Math.floor(secs / 60);
         const s = String(secs % 60).padStart(2, '0');
         el.textContent = `${m}:${s}`;
+
+        // Fallback: if no stage data after 5s, assume Researching
+        if (secs === 5 && !lastStage) {
+            updateTimeline('Researching');
+            setComment('Pipeline started — researching UK legal data via Gemini…');
+        }
+        // Fallback commentary updates if stage never changes
+        if (!lastStage || lastStage === 'Researching') {
+            if (secs === 30) setComment('Still researching — Gemini is checking GOV.UK, case law, and legal databases…');
+            if (secs === 60) setComment('Research is thorough — pulling statistics, legislation, and source URLs…');
+        }
+        if (secs === 120 && lastStage === 'Writing') setComment('Claude is crafting the article — weaving in hard truths and a clear CTA…');
+        if (secs === 180) setComment('Almost there — the pipeline is finishing up…');
     }, 1000);
 }
 
@@ -252,14 +269,14 @@ function updateTimeline(stage) {
         const auditEl = container.querySelector('[data-step="Auditing"]');
         if (auditEl) {
             auditEl.querySelector('.step-icon').textContent = '✗';
-            auditEl.className = 'flex items-center gap-2.5 text-red-500 font-medium';
+            auditEl.className = 'flex items-center gap-3 text-red-500 font-medium';
             auditEl.querySelector('.step-label').textContent = 'Audit failed — issues found';
         }
         // Add a rewrite row if not already there
         if (!container.querySelector('[data-step="Rewriting"]')) {
             const row = document.createElement('div');
             row.dataset.step = 'Rewriting';
-            row.className = 'flex items-center gap-2.5 text-[#C4A470] font-medium';
+            row.className = 'flex items-center gap-3 text-[#C4A470] font-medium';
             row.innerHTML = '<span class="step-icon w-4 text-center flex-shrink-0 animate-pulse">●</span><span class="step-label">Rewriting draft…</span>';
             const savingEl = container.querySelector('[data-step="Saving"]');
             container.insertBefore(row, savingEl);
@@ -271,13 +288,13 @@ function updateTimeline(stage) {
     if (stage.startsWith('Auditing') && container.querySelector('[data-step="Rewriting"]')) {
         const rwEl = container.querySelector('[data-step="Rewriting"]');
         rwEl.querySelector('.step-icon').textContent = '✓';
-        rwEl.className = 'flex items-center gap-2.5 text-green-600';
+        rwEl.className = 'flex items-center gap-3 text-green-600';
 
         // Reset audit row for re-check
         const auditEl = container.querySelector('[data-step="Auditing"]');
         if (auditEl) {
             auditEl.querySelector('.step-icon').textContent = '●';
-            auditEl.className = 'flex items-center gap-2.5 text-[#C4A470] font-medium';
+            auditEl.className = 'flex items-center gap-3 text-[#C4A470] font-medium';
             auditEl.querySelector('.step-label').textContent = 'Re-checking after rewrite…';
             auditEl.querySelector('.step-icon').classList.add('animate-pulse');
         }
@@ -292,13 +309,13 @@ function updateTimeline(stage) {
 
         if (step === baseStep) {
             el.querySelector('.step-icon').textContent = '●';
-            el.className = 'flex items-center gap-2.5 text-[#C4A470] font-medium';
+            el.className = 'flex items-center gap-3 text-[#C4A470] font-medium';
             el.querySelector('.step-icon').classList.add('animate-pulse');
         } else if (baseSteps.indexOf(step) < baseSteps.indexOf(baseStep)) {
             if (!el.classList.contains('text-red-500')) {
                 el.querySelector('.step-icon').textContent = '✓';
                 el.querySelector('.step-icon').classList.remove('animate-pulse');
-                el.className = 'flex items-center gap-2.5 text-green-600';
+                el.className = 'flex items-center gap-3 text-green-600';
             }
         }
     }
