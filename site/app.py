@@ -23,9 +23,40 @@ if PROJECT_ROOT not in sys.path:
 # Background task tracking
 _tasks = {}
 
+# ⚡ Pre-compiled regexes — avoids recompilation on every request
+_RE_H1 = re.compile(r"^#\s+(.+)$", re.MULTILINE)
+_RE_DATE_PREFIX = re.compile(r"^(\d{4}-\d{2}-\d{2})")
+_RE_STRIP_DATE = re.compile(r"^\d{4}-\d{2}-\d{2}-?")
+_RE_SLUG_CLEAN = re.compile(r"[^a-z0-9]+")
+_RE_STRIP_H1 = re.compile(r"^#\s+.+\n*")
+_RE_STRIP_MD = re.compile(r"[#*_\[\]()>`]")
+
+# ⚡ Posts cache — avoids re-reading every .md file on each request.
+# Invalidates when the output directory's mtime changes (new/modified files).
+_posts_cache = {"mtime": 0, "posts": []}
+
+
+def _output_dir_mtime():
+    """Cheap check: latest mtime across output dir and its .md files."""
+    try:
+        return max(
+            os.path.getmtime(OUTPUT_DIR),
+            max((os.path.getmtime(f) for f in glob.glob(os.path.join(OUTPUT_DIR, "*.md"))), default=0),
+        )
+    except OSError:
+        return 0
+
 
 def get_posts():
-    """Load all markdown files from output/ and return sorted post list."""
+    """Load all markdown files from output/ and return sorted post list.
+
+    ⚡ Cached: only re-reads files when the output directory changes.
+    Reduces per-request I/O from O(n) file reads to a single stat() check.
+    """
+    current_mtime = _output_dir_mtime()
+    if current_mtime == _posts_cache["mtime"] and _posts_cache["posts"]:
+        return _posts_cache["posts"]
+
     posts = []
     md_files = [f for f in glob.glob(os.path.join(OUTPUT_DIR, "*.md"))
                 if not f.endswith(".editor.md") and not f.endswith(".audit.md")]
@@ -36,11 +67,11 @@ def get_posts():
             content = f.read()
 
         # Extract title from first H1
-        title_match = re.search(r"^#\s+(.+)$", content, re.MULTILINE)
+        title_match = _RE_H1.search(content)
         title = title_match.group(1) if title_match else filename.replace(".md", "").replace("-", " ").title()
 
         # Extract date from filename (e.g., 2026-03-04-pension-sharing.md)
-        date_match = re.match(r"(\d{4}-\d{2}-\d{2})", filename)
+        date_match = _RE_DATE_PREFIX.match(filename)
         if date_match:
             date_str = date_match.group(1)
             date = datetime.strptime(date_str, "%Y-%m-%d")
@@ -48,14 +79,13 @@ def get_posts():
             date = datetime.fromtimestamp(os.path.getmtime(filepath))
 
         # Generate slug from filename (strip date prefix and extension)
-        slug = re.sub(r"^\d{4}-\d{2}-\d{2}-?", "", filename)
-        slug = slug.replace(".md", "")
+        slug = _RE_STRIP_DATE.sub("", filename).replace(".md", "")
         if not slug:
-            slug = re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-")
+            slug = _RE_SLUG_CLEAN.sub("-", title.lower()).strip("-")
 
         # Excerpt: first 150 chars of body text (skip title line)
-        body = re.sub(r"^#\s+.+\n*", "", content, count=1).strip()
-        body_text = re.sub(r"[#*_\[\]()>`]", "", body)
+        body = _RE_STRIP_H1.sub("", content, count=1).strip()
+        body_text = _RE_STRIP_MD.sub("", body)
         excerpt = body_text[:150].rsplit(" ", 1)[0] + "..." if len(body_text) > 150 else body_text
 
         # Detect category — check title first (most specific), then body
@@ -96,6 +126,10 @@ def get_posts():
         })
 
     posts.sort(key=lambda p: p["date"], reverse=True)
+
+    # ⚡ Store in cache
+    _posts_cache["mtime"] = current_mtime
+    _posts_cache["posts"] = posts
     return posts
 
 
@@ -126,7 +160,7 @@ def post(slug):
         content = f.read()
 
     # Strip the first H1 (already displayed in the page hero)
-    content = re.sub(r"^#\s+.+\n*", "", content, count=1).strip()
+    content = _RE_STRIP_H1.sub("", content, count=1).strip()
     html_content = markdown.markdown(content, extensions=["tables", "fenced_code"])
 
     # Load editor notes if available
