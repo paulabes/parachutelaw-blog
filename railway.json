@@ -1,6 +1,6 @@
 {
   "$schema": "https://railway.com/railway.schema.json",
   "build": {
-    "buildCommand": "cp -r output output_seed && pip install -r requirements.txt"
+    "buildCommand": "cp -r output output_seed"
   }
 }
