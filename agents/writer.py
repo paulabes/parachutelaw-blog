@@ -16,7 +16,7 @@ def write(topic: str, research_brief: str) -> str:
     client = Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
 
     message = client.messages.create(
-        model="claude-sonnet-4-5-20250929",
+        model="claude-sonnet-4-6-20250514",
         max_tokens=4096,
         system=system_prompt,
         messages=[
@@ -41,7 +41,7 @@ def rewrite(topic: str, research_brief: str, previous_draft: str, audit_feedback
     client = Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
 
     message = client.messages.create(
-        model="claude-sonnet-4-5-20250929",
+        model="claude-sonnet-4-6-20250514",
         max_tokens=4096,
         system=system_prompt,
         messages=[
