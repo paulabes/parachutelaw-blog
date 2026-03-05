@@ -5,6 +5,7 @@ import re
 import sys
 import glob
 import uuid
+import shutil
 import threading
 from datetime import datetime
 from flask import Flask, render_template, abort, request, jsonify
@@ -19,6 +20,16 @@ OUTPUT_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
+
+# Seed volume: when Railway mounts an empty volume over output/, copy git articles in.
+# The git articles are stashed in output_seed/ at build time (see below).
+SEED_DIR = os.path.join(PROJECT_ROOT, "output_seed")
+if os.path.isdir(SEED_DIR) and not glob.glob(os.path.join(OUTPUT_DIR, "*.md")):
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    for f in glob.glob(os.path.join(SEED_DIR, "*.md")):
+        dest = os.path.join(OUTPUT_DIR, os.path.basename(f))
+        if not os.path.exists(dest):
+            shutil.copy2(f, dest)
 
 # Background task tracking
 _tasks = {}
