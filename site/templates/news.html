@@ -152,28 +152,31 @@ function generateArticle() {
             <span class="text-[10px] uppercase tracking-widest text-gray-500">&nbsp;</span>
         </div>
         <div class="p-8">
-            <p class="text-sm font-medium text-[#050615] mb-4">${modeLabel} <span class="text-[#C4A470]">${area}</span></p>
-            <div id="loading-steps" class="space-y-2 text-xs">
-                <div data-step="Researching" class="flex items-center gap-2 text-gray-300">
-                    <span class="step-icon w-4 text-center">○</span>
-                    <span>Research via Gemini</span>
+            <p class="text-sm font-medium text-[#050615] mb-1">${modeLabel} <span class="text-[#C4A470]">${area}</span></p>
+            <p id="loading-timer" class="text-[10px] text-gray-400 mb-4 font-mono">0:00</p>
+            <div id="loading-steps" class="space-y-2.5 text-xs">
+                <div data-step="Researching" class="flex items-center gap-2.5 text-gray-300">
+                    <span class="step-icon w-4 text-center flex-shrink-0">○</span>
+                    <span class="step-label">Research via Gemini</span>
                 </div>
-                <div data-step="Writing" class="flex items-center gap-2 text-gray-300">
-                    <span class="step-icon w-4 text-center">○</span>
-                    <span>Write article via Claude</span>
+                <div data-step="Writing" class="flex items-center gap-2.5 text-gray-300">
+                    <span class="step-icon w-4 text-center flex-shrink-0">○</span>
+                    <span class="step-label">Write article via Claude</span>
                 </div>
-                <div data-step="Auditing" class="flex items-center gap-2 text-gray-300">
-                    <span class="step-icon w-4 text-center">○</span>
-                    <span>Fact-check via Gemini</span>
+                <div data-step="Auditing" class="flex items-center gap-2.5 text-gray-300">
+                    <span class="step-icon w-4 text-center flex-shrink-0">○</span>
+                    <span class="step-label">Fact-check via Gemini</span>
                 </div>
-                <div data-step="Saving" class="flex items-center gap-2 text-gray-300">
-                    <span class="step-icon w-4 text-center">○</span>
-                    <span>Save article</span>
+                <div data-step="Saving" class="flex items-center gap-2.5 text-gray-300">
+                    <span class="step-icon w-4 text-center flex-shrink-0">○</span>
+                    <span class="step-label">Save article</span>
                 </div>
             </div>
+            <p id="loading-comment" class="text-[11px] text-gray-400 mt-4 italic leading-relaxed">Starting up&hellip; this usually takes 2-4 minutes.</p>
         </div>
     `;
     grid.insertBefore(placeholder, grid.firstChild);
+    startTimer();
 
     // Start generation
     fetch('/api/generate', {
@@ -188,6 +191,7 @@ function generateArticle() {
     })
     .catch(err => {
         placeholder.remove();
+        stopTimer();
         resetControls();
         alert('Failed to start generation: ' + err.message);
     });
@@ -196,6 +200,38 @@ function generateArticle() {
 // Ordered base steps for the timeline
 const baseSteps = ['Researching', 'Writing', 'Auditing', 'Saving'];
 let lastStage = null;
+let genStartTime = null;
+let timerInterval = null;
+
+const stageComments = {
+    'Researching': 'Gemini is searching UK legal databases and GOV.UK for current data…',
+    'Writing': 'Claude is drafting a 1,200-word article in the Parachute Law voice…',
+    'Auditing': 'Gemini is fact-checking every statistic, law reference, and claim…',
+    'Rewriting': 'Audit found issues — Claude is fixing the draft and re-checking facts…',
+    'Saving': 'Nearly there — saving the final article and editor notes…',
+};
+
+function startTimer() {
+    genStartTime = Date.now();
+    timerInterval = setInterval(() => {
+        const el = document.getElementById('loading-timer');
+        if (!el) { clearInterval(timerInterval); return; }
+        const secs = Math.floor((Date.now() - genStartTime) / 1000);
+        const m = Math.floor(secs / 60);
+        const s = String(secs % 60).padStart(2, '0');
+        el.textContent = `${m}:${s}`;
+    }, 1000);
+}
+
+function stopTimer() {
+    if (timerInterval) clearInterval(timerInterval);
+    timerInterval = null;
+}
+
+function setComment(text) {
+    const el = document.getElementById('loading-comment');
+    if (el) el.textContent = text;
+}
 
 function updateTimeline(stage) {
     if (!stage || stage === lastStage) return;
@@ -207,22 +243,24 @@ function updateTimeline(stage) {
     // Determine the base step name (e.g. "Auditing (attempt 2)" → "Auditing")
     const baseStep = stage.split(' (')[0];
 
+    // Update commentary
+    setComment(stageComments[baseStep] || stage + '…');
+
     // Handle rewrite/retry: insert extra rows dynamically
     if (baseStep === 'Rewriting') {
         // Mark the audit step as failed
         const auditEl = container.querySelector('[data-step="Auditing"]');
         if (auditEl) {
             auditEl.querySelector('.step-icon').textContent = '✗';
-            auditEl.className = 'flex items-center gap-2 text-red-400';
-            auditEl.querySelector('span:last-child').textContent = 'Audit failed';
+            auditEl.className = 'flex items-center gap-2.5 text-red-500 font-medium';
+            auditEl.querySelector('.step-label').textContent = 'Audit failed — issues found';
         }
         // Add a rewrite row if not already there
         if (!container.querySelector('[data-step="Rewriting"]')) {
             const row = document.createElement('div');
             row.dataset.step = 'Rewriting';
-            row.className = 'flex items-center gap-2 text-[#C4A470] font-medium';
-            row.innerHTML = '<span class="step-icon w-4 text-center animate-pulse">●</span><span>Rewriting draft…</span>';
-            // Insert before Saving
+            row.className = 'flex items-center gap-2.5 text-[#C4A470] font-medium';
+            row.innerHTML = '<span class="step-icon w-4 text-center flex-shrink-0 animate-pulse">●</span><span class="step-label">Rewriting draft…</span>';
             const savingEl = container.querySelector('[data-step="Saving"]');
             container.insertBefore(row, savingEl);
         }
@@ -233,15 +271,17 @@ function updateTimeline(stage) {
     if (stage.startsWith('Auditing') && container.querySelector('[data-step="Rewriting"]')) {
         const rwEl = container.querySelector('[data-step="Rewriting"]');
         rwEl.querySelector('.step-icon').textContent = '✓';
-        rwEl.className = 'flex items-center gap-2 text-green-500';
+        rwEl.className = 'flex items-center gap-2.5 text-green-600';
 
         // Reset audit row for re-check
         const auditEl = container.querySelector('[data-step="Auditing"]');
         if (auditEl) {
             auditEl.querySelector('.step-icon').textContent = '●';
-            auditEl.className = 'flex items-center gap-2 text-[#C4A470] font-medium';
-            auditEl.querySelector('span:last-child').textContent = 'Re-checking…';
+            auditEl.className = 'flex items-center gap-2.5 text-[#C4A470] font-medium';
+            auditEl.querySelector('.step-label').textContent = 'Re-checking after rewrite…';
+            auditEl.querySelector('.step-icon').classList.add('animate-pulse');
         }
+        setComment('Gemini is re-checking the revised draft for accuracy…');
         return;
     }
 
@@ -251,16 +291,14 @@ function updateTimeline(stage) {
         if (!el) continue;
 
         if (step === baseStep) {
-            // Active
             el.querySelector('.step-icon').textContent = '●';
-            el.className = 'flex items-center gap-2 text-[#C4A470] font-medium';
+            el.className = 'flex items-center gap-2.5 text-[#C4A470] font-medium';
             el.querySelector('.step-icon').classList.add('animate-pulse');
         } else if (baseSteps.indexOf(step) < baseSteps.indexOf(baseStep)) {
-            // Completed (only if not already marked as failed)
-            if (!el.classList.contains('text-red-400')) {
+            if (!el.classList.contains('text-red-500')) {
                 el.querySelector('.step-icon').textContent = '✓';
                 el.querySelector('.step-icon').classList.remove('animate-pulse');
-                el.className = 'flex items-center gap-2 text-green-500';
+                el.className = 'flex items-center gap-2.5 text-green-600';
             }
         }
     }
@@ -272,10 +310,13 @@ function pollStatus(taskId) {
         .then(r => r.json())
         .then(data => {
             if (data.status === 'running') {
+                console.log('[poll]', JSON.stringify(data));
                 updateTimeline(data.stage);
                 return;
             }
+            console.log('[poll:done]', JSON.stringify(data));
             clearInterval(interval);
+            stopTimer();
 
             const placeholder = document.getElementById('loading-card');
 
@@ -306,6 +347,7 @@ function pollStatus(taskId) {
         })
         .catch(() => {
             clearInterval(interval);
+            stopTimer();
             document.getElementById('loading-card')?.remove();
             resetControls();
         });
