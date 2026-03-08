@@ -42,6 +42,32 @@
 
 <body class="bg-[#050615] text-white antialiased selection:bg-white selection:text-black overflow-x-hidden">
 
+    <!-- Password Gate -->
+    <div id="password-gate" class="min-h-screen bg-[#050615] flex items-center justify-center p-6">
+        <div class="bg-[#0a0a0a] border border-white/10 p-10 rounded-lg max-w-sm w-full text-center">
+            <h1 class="font-serif text-2xl text-white mb-1">Parachute <span class="text-[#C4A470] italic">Law</span></h1>
+            <p class="text-[9px] tracking-[0.2em] uppercase text-gray-500 mb-8">Preview Site</p>
+            <form id="password-form">
+                <input
+                    type="password"
+                    id="password-input"
+                    placeholder="Enter password"
+                    class="w-full px-4 py-3 bg-[#1a1a1a] border border-gray-700 rounded-md text-center text-white tracking-widest placeholder-gray-500 focus:outline-none focus:border-[#C4A470] transition-colors"
+                    autofocus
+                />
+                <p id="password-error" class="text-red-400 text-xs mt-2 hidden">Incorrect password</p>
+                <button
+                    type="submit"
+                    class="w-full mt-4 bg-[#C4A470] hover:bg-[#b8956a] text-white py-3 rounded-md text-xs tracking-widest uppercase font-semibold transition-colors"
+                >
+                    Enter
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div id="site-content" class="hidden">
+
     <!-- Navigation -->
     <header class="fixed transition-all duration-300 backdrop-blur-md z-50 w-full border-white/5 border-b top-0 bg-[#050615]/80" id="main-header">
         <div class="lg:px-12 flex h-24 max-w-[1400px] mx-auto px-6 items-center justify-between">
@@ -187,6 +213,42 @@
             </div>
         </footer>
     </div>
+
+    </div><!-- /site-content -->
+
+    <!-- Password Gate Script -->
+    <script>
+        const SITE_PASSWORD = 'canopy2026';
+
+        function setupPasswordGate() {
+            const gate = document.getElementById('password-gate');
+            const content = document.getElementById('site-content');
+            const form = document.getElementById('password-form');
+            const input = document.getElementById('password-input');
+            const error = document.getElementById('password-error');
+
+            if (sessionStorage.getItem('siteAuth') === 'true') {
+                gate.classList.add('hidden');
+                content.classList.remove('hidden');
+            }
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                if (input.value === SITE_PASSWORD) {
+                    sessionStorage.setItem('siteAuth', 'true');
+                    gate.classList.add('hidden');
+                    content.classList.remove('hidden');
+                    error.classList.add('hidden');
+                } else {
+                    error.classList.remove('hidden');
+                    input.classList.remove('border-gray-700');
+                    input.classList.add('border-red-400');
+                }
+            });
+        }
+
+        setupPasswordGate();
+    </script>
 
     <!-- Scripts -->
     <script>
